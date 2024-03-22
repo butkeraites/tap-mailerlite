@@ -6,7 +6,7 @@ import sys
 from typing import Any, Callable, Iterable
 
 import requests
-from singer_sdk.authenticators import APIKeyAuthenticator
+from singer_sdk.authenticators import BearerTokenAuthenticator
 from singer_sdk.helpers.jsonpath import extract_jsonpath
 from singer_sdk.pagination import BaseAPIPaginator  # noqa: TCH002
 from singer_sdk.streams import RESTStream
@@ -18,9 +18,6 @@ else:
 
 _Auth = Callable[[requests.PreparedRequest], requests.PreparedRequest]
 
-# TODO: Delete this is if not using json files for schema definition
-SCHEMAS_DIR = importlib_resources.files(__package__) / "schemas"
-
 
 class MailerLiteStream(RESTStream):
     """MailerLite stream class."""
@@ -28,26 +25,23 @@ class MailerLiteStream(RESTStream):
     @property
     def url_base(self) -> str:
         """Return the API URL root, configurable via tap settings."""
-        # TODO: hardcode a value here, or retrieve it from self.config
-        return "https://api.mysample.com"
+        return "https://connect.mailerlite.com/api"
 
-    records_jsonpath = "$[*]"  # Or override `parse_response`.
+    records_jsonpath = "$.data[*]"
 
     # Set this value or override `get_new_paginator`.
     next_page_token_jsonpath = "$.next_page"  # noqa: S105
 
     @property
-    def authenticator(self) -> APIKeyAuthenticator:
+    def authenticator(self) -> BearerTokenAuthenticator:
         """Return a new authenticator object.
 
         Returns:
             An authenticator instance.
         """
-        return APIKeyAuthenticator.create_for_stream(
+        return BearerTokenAuthenticator.create_for_stream(
             self,
-            key="x-api-key",
-            value=self.config.get("auth_token", ""),
-            location="header",
+            token=self.config.get("auth_token", ""),
         )
 
     @property

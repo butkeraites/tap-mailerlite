@@ -12,8 +12,7 @@ with open(".secrets/config.json") as json_file:
     data = json.load(json_file)
     SAMPLE_CONFIG = {
         "start_date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),
-        "auth_token": data["TAP_MAILERLITE_AUTH_TOKEN"],
-        "project_ids": [data["PROJECT_ID"]],
+        "auth_token": data["auth_token"],
     }
 
 
