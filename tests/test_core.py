@@ -8,7 +8,7 @@ from tap_mailerlite.tap import TapMailerLite
 
 import json
 
-with open(".secrets/config.json") as json_file:
+with open("config.json") as json_file:
     data = json.load(json_file)
     SAMPLE_CONFIG = {
         "start_date": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d"),

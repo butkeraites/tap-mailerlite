@@ -113,8 +113,18 @@ class CampaignsStream(MailerLiteStream):
                 th.Property("use_google_analytics", th.BooleanType),
             ),
         ),
-        th.Property("filter", th.ArrayType(th.AnyType)),
-        th.Property("filter_for_humans", th.ArrayType(th.AnyType)),
+        th.Property(
+            "filter",
+            th.ArrayType(
+                th.ArrayType(
+                    th.ObjectType(
+                        th.Property("operator", th.StringType),
+                        th.Property("args", th.ArrayType(th.AnyType)),
+                    )
+                )
+            ),
+        ),
+        th.Property("filter_for_humans", th.ArrayType(th.ArrayType(th.StringType))),
         th.Property("delivery_schedule", th.StringType),
         th.Property("language_id", th.StringType),
         th.Property(
@@ -251,7 +261,7 @@ class CampaignsStream(MailerLiteStream):
                     th.Property("uses_survey", th.BooleanType),
                     th.Property("uses_quiz", th.BooleanType),
                     th.Property("preheader", th.StringType),
-                )
+                ),
             ),
         ),
         th.Property("used_in_automations", th.BooleanType),
