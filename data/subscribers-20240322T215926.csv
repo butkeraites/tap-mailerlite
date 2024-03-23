@@ -1,0 +1,4 @@
+id,email,status,source,sent,opens_count,clicks_count,open_rate,click_rate,ip_address,subscribed_at,unsubscribed_at,created_at,updated_at,fields__name,fields__last_name,fields__company,fields__country,fields__city,fields__phone,fields__state,fields__z_i_p,opted_in_at,optin_ip
+116527665117136593,butkeraites@protonmail.com,unsubscribed,manual,1,1,0,100,0,,2024-03-22 17:44:01,2024-03-22 17:47:24,2024-03-22 17:44:01,2024-03-22 17:47:42,Renan,Cano,,,,,,,,
+116520898865923727,ana.dca@hotmail.com,active,manual,1,0,0,0,0,,2024-03-22 15:56:28,,2024-03-22 15:56:28,2024-03-22 17:46:06,Ana Paula,Dias Cano Butkeraites,Do Lar,Brazil,Campinas,1209381029381,Sao Paulo,1279187729817298172,,
+116508641798915242,rbritobut@gmail.com,active,manual,1,1,1,100,100,,2024-03-22 12:41:39,,2024-03-22 12:41:39,2024-03-22 17:47:01,Renan Butkeraites,,,,,,,,,
